@@ -2,11 +2,11 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"os"
 
 	"github.com/zebra-f/Advent-of-Code-2023/day1/puzzle"
 )
+
 func check_error(err error) {
 	if err != nil {
 		panic(err)
@@ -15,7 +15,6 @@ func check_error(err error) {
 }
 
 func main() {
-	fmt.Println("Test Day1")
 	file, err := os.Open("day1/input.txt")
 	check_error(err)
 	defer file.Close()
@@ -28,4 +27,5 @@ func main() {
 	}
 
 	puzzle.FirstPuzzle(linesList)
+	puzzle.SecondPuzzle(linesList)
 }
