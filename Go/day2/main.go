@@ -6,24 +6,14 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/zebra-f/Advent-of-Code-2023/day2/common"
 	"github.com/zebra-f/Advent-of-Code-2023/day2/puzzle"
 	"github.com/zebra-f/Advent-of-Code-2023/day2/structures"
 )
 
-func check_error(err error) {
-	if err != nil {
-		panic(err)
-	}
-}
-
-// type Game struct {
-// 	Index int
-// 	Sets []string
-// }
-
 func main() {
 	file, err := os.Open("day2/input.txt")
-	check_error(err)
+	common.CheckError(err)
 
 	defer file.Close()
 	gamesList := []structures.Game{}
@@ -36,7 +26,7 @@ func main() {
 		collonIndex := strings.Index(line, ":")
 		gameIndexStr := strings.TrimSpace(line[collonIndex-2:collonIndex]) 
 		gameIndexInt, err := strconv.Atoi(gameIndexStr)
-		check_error(err)
+		common.CheckError(err)
 		game.Index = gameIndexInt
 		// get Game sets
 		gameSets := strings.Split(line[collonIndex+1:], ";")
@@ -54,4 +44,5 @@ func main() {
 	}
 
 	puzzle.FirstPuzzle(gamesList)
+	puzzle.SecondPuzzle(gamesList)
 }

@@ -7,7 +7,7 @@ import (
 	"github.com/zebra-f/Advent-of-Code-2023/day1/puzzle"
 )
 
-func check_error(err error) {
+func checkError(err error) {
 	if err != nil {
 		panic(err)
 	}
@@ -15,7 +15,7 @@ func check_error(err error) {
 
 func main() {
 	file, err := os.Open("day1/input.txt")
-	check_error(err)
+	checkError(err)
 	defer file.Close()
 
 	linesList := []string{}
