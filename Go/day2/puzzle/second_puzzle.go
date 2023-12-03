@@ -14,6 +14,6 @@ func SecondPuzzle(gamesList []structures.Game) int {
 		answer += red * blue * green
 	}
 
-	fmt.Println(answer)
+	fmt.Println("Second puzzle answer: ", answer)
 	return answer
 }

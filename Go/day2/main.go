@@ -13,9 +13,9 @@ import (
 
 func main() {
 	file, err := os.Open("day2/input.txt")
-	common.CheckError(err)
-
+	common.ErrorCheck(err)
 	defer file.Close()
+	
 	gamesList := []structures.Game{}
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
@@ -26,7 +26,7 @@ func main() {
 		collonIndex := strings.Index(line, ":")
 		gameIndexStr := strings.TrimSpace(line[collonIndex-2:collonIndex]) 
 		gameIndexInt, err := strconv.Atoi(gameIndexStr)
-		common.CheckError(err)
+		common.ErrorCheck(err)
 		game.Index = gameIndexInt
 		// get Game sets
 		gameSets := strings.Split(line[collonIndex+1:], ";")

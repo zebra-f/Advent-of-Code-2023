@@ -16,6 +16,6 @@ func FirstPuzzle(gamesList []structures.Game) int {
 		}
 	}
 
-	fmt.Println(answer)
+	fmt.Println("First puzzle answer: ", answer)
 	return answer
 }

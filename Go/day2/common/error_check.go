@@ -1,6 +1,6 @@
 package common
 
-func CheckError(err error) {
+func ErrorCheck(err error) {
 	if err != nil {
 		panic(err)
 	}
