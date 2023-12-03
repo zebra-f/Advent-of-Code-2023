@@ -28,4 +28,5 @@ func main() {
 	linesList = append(linesList, "." + strings.Repeat(".", len(firstLine)) + ".")
 
 	puzzle.FirstPuzzle(linesList)
+	puzzle.SecondPuzzle(linesList)
 }
