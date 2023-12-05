@@ -84,4 +84,5 @@ func main() {
 	}
 
 	puzzle.FirstPuzzle(seedsIntList, mapNamesList, maps)
+	puzzle.SecondPuzzle(seedsIntList, mapNamesList, maps)
 }
