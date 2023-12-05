@@ -8,11 +8,12 @@ import (
 	"strings"
 
 	Go "github.com/zebra-f/Advent-of-Code-2023"
+	"github.com/zebra-f/Advent-of-Code-2023/day5/puzzle"
 )
 
 func main() {
 	
-	file, err := os.Open("day5/example_input.txt")
+	file, err := os.Open("day5/input.txt")
 	Go.ErrorCheck(err)
 	defer file.Close()
 
@@ -65,13 +66,13 @@ func main() {
 
 		// convert string ranges to int
 		seedsRangeStrList := strings.Split(currLine, " ")
-		speedsRangeIntList := [3]int{}
+		seedsRangeIntList := [3]int{}
 		for i, val := range seedsRangeStrList {
 			if intVal, err := strconv.Atoi(val); err == nil {
-				speedsRangeIntList[i] = intVal
+				seedsRangeIntList[i] = intVal
 			}
 		}
-		maps[mapNamesList[mapCounter]] = append(maps[mapNamesList[mapCounter]], speedsRangeIntList) 
+		maps[mapNamesList[mapCounter]] = append(maps[mapNamesList[mapCounter]], seedsRangeIntList) 
 
 	}
 
@@ -81,4 +82,6 @@ func main() {
 			return maps[key][i][1] < maps[key][j][1]
 		})
 	}
+
+	puzzle.FirstPuzzle(seedsIntList, mapNamesList, maps)
 }
