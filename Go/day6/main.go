@@ -36,5 +36,6 @@ func main() {
 	}
 
 	puzzle.FirstPuzzle(times, distances)
+	puzzle.SecondPuzzle(times, distances)
 
 }
