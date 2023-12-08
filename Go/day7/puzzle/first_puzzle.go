@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	Go "github.com/zebra-f/Advent-of-Code-2023"
+	"github.com/zebra-f/Advent-of-Code-2023/day7/common"
 )
 
 func FirstPuzzle(lines [][]string) (answer int) {
@@ -69,23 +70,7 @@ func FirstPuzzle(lines [][]string) (answer int) {
 		}
 	}
 
-	rank := 1
-	for i := 0; i <= 5; i++ {
-		sort.Strings(typeMap[i])
-		for j := 0; j < len(typeMap[i]); j++ {
-			answer += rank * handBidMap[typeMap[i][j]]
-			rank += 1
-		}
-		if i == 3 {
-			sort.Strings(typeMap[32])
-			for j := 0; j < len(typeMap[32]); j++ {
-
-				answer += rank * handBidMap[typeMap[32][j]]
-				rank += 1
-			}
-		}
-	}
-
+	answer = common.GetTotalWinnings(typeMap, handBidMap)
 	fmt.Println("First puzzle answer: ", answer)
 	return answer
 }

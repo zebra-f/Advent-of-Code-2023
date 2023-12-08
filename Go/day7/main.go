@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	file, err := os.Open("day7/input.txt")
+	file, err := os.Open("day7/debug_input.txt")
 	Go.ErrorCheck(err)
 	defer file.Close()
 
@@ -19,12 +19,15 @@ func main() {
 	for scanner.Scan() {
 		line := scanner.Text()
 		line = strings.Replace(line, "T", "B", -1)
-		line = strings.Replace(line, "K", "V", -1)
-		line = strings.Replace(line, "A", "Z", -1)
+		line = strings.Replace(line, "J", "C", -1)
+		line = strings.Replace(line, "Q", "D", -1)
+		line = strings.Replace(line, "K", "E", -1)
+		line = strings.Replace(line, "A", "F", -1)
 
 		handBid := strings.Split(line, " ")
 		lines = append(lines, handBid)
 	}
 	
 	puzzle.FirstPuzzle(lines)
+	puzzle.SecondPuzzle(lines)
 }
