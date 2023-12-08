@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	file, err := os.Open("day7/debug_input.txt")
+	file, err := os.Open("day7/input.txt")
 	Go.ErrorCheck(err)
 	defer file.Close()
 

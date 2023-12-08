@@ -21,38 +21,19 @@ func SecondPuzzle(lines [][]string) (answer int) {
 		0: {},  // High card
 	}
 	handBidMap := map[string]int{}
-
 	for _, line := range lines {
 		hand := line[0]
-		// these are current replacement (used also for the first puzzle): 
-		// line = strings.Replace(line, "T", "B", -1)
-		// line = strings.Replace(line, "J", "C", -1)
-		// line = strings.Replace(line, "Q", "D", -1)
-		// line = strings.Replace(line, "K", "E", -1)
-		// line = strings.Replace(line, "A", "F", -1), they are ordered from lowest ("T"-"B") to highest value ("A"-"F") 
-		// replace "C" (Joker) with "1"
 		hand = strings.Replace(hand, "C", "1", -1)
 		
 		bid, err := strconv.Atoi(line[1])
 		Go.ErrorCheck(err)
 		
-		// simple mapping of hand and it's value
 		handBidMap[hand] = bid
 		
 		handSlice := strings.Split(hand, "")
-		// sort, so for example slice of "51F51" becomse [1 1 5 5 F]
 		sort.Strings(handSlice)
 		counter := 1
 		jokerCounter := 0
-		// a little bit confusing
-		// [
-		// 	0 stores: nothing,
-		// 	1 number of `high cards` either 1 or 5,
-		// 	2 number of `two pairs`- either 1 or 2,
-		// 	3 number Three of a kind (1 or 0) etc.
-		// 	4
-		// 	5
-		// ]
 		sliceCounter := make([]int, 6)
 		for j, char := range handSlice {
 			if j == 0 {
@@ -79,11 +60,8 @@ func SecondPuzzle(lines [][]string) (answer int) {
 		sliceCounter[counter] += 1
 		
 		if jokerCounter == 5 || jokerCounter == 4 || sliceCounter[5] == 1  {
-			if sliceCounter[5] == 1 {
-				fmt.Println(hand)
-			}
 			typeMap[5] = append(typeMap[5], hand)
-		}  else if sliceCounter[4] == 1 {  // four of kind
+		} else if sliceCounter[4] == 1 {  // four of kind
 			if jokerCounter == 1 {
 				typeMap[5] = append(typeMap[5], hand)
 			} else {
@@ -106,14 +84,16 @@ func SecondPuzzle(lines [][]string) (answer int) {
 				typeMap[2] = append(typeMap[2], hand)
 			}
 		} else if sliceCounter[2] == 1 { // one pair
-			if jokerCounter >= 2 {
+			if jokerCounter == 3 {
+				typeMap[5] = append(typeMap[5], hand)
+			} else if jokerCounter == 2 {
 				typeMap[4] = append(typeMap[4], hand)
 			} else if jokerCounter == 1 {
 				typeMap[3] = append(typeMap[3], hand)
 			} else {
 				typeMap[1] = append(typeMap[1], hand)
 			}
-		} else {  // uniqe cards
+		} else {  // high card
 			if jokerCounter == 3 {
 				typeMap[4] = append(typeMap[4], hand)
 			} else if jokerCounter == 2 {
