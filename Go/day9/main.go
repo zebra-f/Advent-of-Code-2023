@@ -32,5 +32,5 @@ func main() {
 	}
 
 	puzzle.FirstPuzzle(lines)
-
+	puzzle.SecondPuzzle(lines)
 }
